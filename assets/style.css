@@ -804,6 +804,17 @@ blockquote cite{
 @media (prefers-reduced-motion:reduce){
   *{ animation:none !important; transition:none !important; }
   .reveal{ opacity:1; transform:none; }
+
+  /* Phones and laptops with "Reduce Motion" switched on stop the strip
+     scrolling. Left alone, it freezes mid-slide with words sliced in half and
+     looks broken. So for those visitors it becomes a deliberate static strip:
+     one set of words, evenly spaced, nothing cut off. */
+  .marquee-mask{ -webkit-mask-image:none; mask-image:none; }
+  .marquee-track{
+    width:100%; justify-content:space-evenly; gap:0;
+    transform:none !important;
+  }
+  .marquee-track > *:nth-child(n+17){ display:none; }
 }
 
 /* ==========================================================================
