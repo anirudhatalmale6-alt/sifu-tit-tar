@@ -466,10 +466,16 @@ h1 em::after{
   transition:transform .5s, opacity .5s;
 }
 .gallery figure:hover figcaption{ transform:translateY(0); opacity:1; }
+/* 4-column grid, 200px rows.
+   Row 1-2: big before/after tile (2x2) + two wide strips stacked beside it.
+   Row 3:   four equal tiles. */
 .g1{ grid-column:span 2; grid-row:span 2; }
 .g2{ grid-column:span 2; }
 .g3{ grid-column:span 2; }
-.g4{ grid-column:span 4; }
+.g4{ grid-column:span 1; }
+.g5{ grid-column:span 1; }
+.g6{ grid-column:span 1; }
+.g7{ grid-column:span 1; }
 
 /* --- reviews ------------------------------------------------------------ */
 .reviews{ padding:clamp(6rem,12vh,10rem) var(--gut); max-width:var(--maxw); margin:0 auto; }
@@ -830,7 +836,8 @@ blockquote cite{
   .contact-grid{ grid-template-columns:1fr; }
   .booking-grid{ grid-template-columns:1fr; }
   .gallery{ grid-template-columns:repeat(2,1fr); grid-auto-rows:180px; }
-  .g1,.g2,.g3,.g4{ grid-column:span 2; }
+  .g1,.g2,.g3{ grid-column:span 2; }
+  .g4,.g5,.g6,.g7{ grid-column:span 1; }
   .g1{ grid-row:span 2; }
 }
 
@@ -868,7 +875,7 @@ blockquote cite{
   .pillars{ grid-template-columns:1fr; }
   .pillars li{ border-right:0; padding-left:0 !important; }
   .gallery{ grid-template-columns:1fr; grid-auto-rows:220px; }
-  .g1,.g2,.g3,.g4{ grid-column:span 1; grid-row:span 1; }
+  .g1,.g2,.g3,.g4,.g5,.g6,.g7{ grid-column:span 1; grid-row:span 1; }
   .g1{ grid-row:span 2; }
   .hero-cta{ flex-direction:column; align-items:stretch; }
   .hero-cta .btn{ width:100%; }
