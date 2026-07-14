@@ -246,6 +246,14 @@ h1 em::after{
   background:var(--cinnabar); color:#fff;
   padding:.85rem 0; overflow:hidden; z-index:3;
 }
+/* Static layer that fades the words in and out at the edges, so a word entering
+   or leaving the strip dissolves instead of being sliced in half. The red band
+   itself is on .marquee and stays full-bleed. */
+.marquee-mask{
+  overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+          mask-image:linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+}
 .marquee-track{
   display:flex; gap:2rem; white-space:nowrap; width:max-content;
   animation:slide 40s linear infinite;
