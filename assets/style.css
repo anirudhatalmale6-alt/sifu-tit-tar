@@ -341,7 +341,7 @@ h1 em::after{
 .treatments::before{
   content:'跌打'; position:absolute; top:8%; right:2%;
   font-family:var(--han); font-size:clamp(6rem,18vw,16rem);
-  color:var(--ink); opacity:.035; line-height:1; pointer-events:none;
+  color:var(--cinnabar); opacity:.10; line-height:1; pointer-events:none;
 }
 .sect-head{ max-width:var(--maxw); margin:0 auto clamp(3rem,6vh,4.5rem); }
 .sect-head.center{ text-align:center; }
