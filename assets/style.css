@@ -254,6 +254,23 @@ h1 em::after{
 .marquee-track i{ color:rgba(255,255,255,.55); font-style:normal; }
 @keyframes slide{ to{ transform:translateX(-50%); } }
 
+/* the same red stripe, repeated between every section */
+.marquee.strip{ position:static; z-index:1; }
+.marquee-track.rev{ animation-direction:reverse; }
+
+/* --- logo watermark, one per section ------------------------------------ */
+.wm{
+  display:block;
+  position:absolute; right:clamp(1rem,3vw,3rem); bottom:clamp(1rem,3vw,2.4rem);
+  width:clamp(90px,10vw,150px); aspect-ratio:697/444;
+  background:url("logo-light.png") no-repeat center/contain;
+  opacity:.06; pointer-events:none; z-index:0;
+  filter:grayscale(1);
+}
+.what, .treatments, .showcase, .reviews, .booking, .contact{ position:relative; }
+.what > *:not(.wm), .treatments > *:not(.wm), .showcase > *:not(.wm),
+.reviews > *:not(.wm), .booking > *:not(.wm), .contact > *:not(.wm){ position:relative; z-index:1; }
+
 /* --- what is tit tar ---------------------------------------------------- */
 .what{ padding:clamp(6rem,12vh,10rem) var(--gut); max-width:var(--maxw); margin:0 auto; }
 .what-grid{
