@@ -509,6 +509,8 @@ blockquote cite{
   font-style:normal; font-size:.68rem; letter-spacing:.18em;
   text-transform:uppercase; color:var(--ink-soft);
 }
+/* SSA booking widget wrapper (WordPress only) */
+.ssa-embed{ max-width:860px; margin:2.4rem auto 0; }
 .reviews-more{ text-align:center; margin-top:2.4rem; }
 .btn-more{ cursor:pointer; }
 blockquote.more-review[hidden]{ display:none; }
