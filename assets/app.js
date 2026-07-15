@@ -41,6 +41,24 @@ document.querySelectorAll('.pillars li, .card, .gallery figure, blockquote').for
   io.observe(el);
 });
 
+// reviews: reveal / hide the full Carousell set
+(function moreReviews(){
+  const btn = document.getElementById('moreReviews');
+  if (!btn) return;
+  const hidden = Array.from(document.querySelectorAll('blockquote.more-review'));
+  let open = false;
+  btn.addEventListener('click', () => {
+    open = !open;
+    hidden.forEach(el => {
+      if (open) { el.hidden = false; el.classList.add('in'); }
+      else { el.hidden = true; }
+    });
+    btn.setAttribute('aria-expanded', String(open));
+    btn.textContent = open ? 'Show fewer reviews' : 'Read all 23 reviews';
+    if (!open) document.getElementById('reviews').scrollIntoView({ behavior:'smooth', block:'start' });
+  });
+})();
+
 /* Enquiry form.
    Demo build: validates, then hands off to WhatsApp so nothing is lost.
    On the live site this posts to contact.php and emails the clinic. */
