@@ -511,6 +511,9 @@ blockquote cite{
 }
 /* SSA booking widget wrapper (WordPress only) */
 .ssa-embed{ max-width:860px; margin:2.4rem auto 0; }
+.ssa-wa{ text-align:center; margin:1.6rem auto 0; font-size:1.02rem; color:#4a4a4a; }
+.ssa-wa a{ color:#b71c1c; font-weight:600; text-decoration:none; white-space:nowrap; }
+.ssa-wa a:hover{ text-decoration:underline; }
 .reviews-more{ text-align:center; margin-top:2.4rem; }
 .btn-more{ cursor:pointer; }
 blockquote.more-review[hidden]{ display:none; }

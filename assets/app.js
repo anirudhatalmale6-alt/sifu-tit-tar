@@ -294,7 +294,7 @@ form.addEventListener('submit', (e) => {
     const msg =
       `Hi Sifu, I'd like to request a booking.\n` +
       `Date: ${pretty(picked)}\n` +
-      `Time: ${ampm(pickedSlot)} (45 min)\n` +
+      `Time: ${ampm(pickedSlot)}\n` +
       `Name: ${nm.value.trim()}\n` +
       `Phone: ${ph.value.trim()}\n` +
       `Problem: ${document.getElementById('bkNotes').value.trim() || '-'}`;
@@ -305,4 +305,41 @@ form.addEventListener('submit', (e) => {
   });
 
   renderMonth();
+})();
+
+/* Hide the "N minutes" duration label inside the Simply Schedule Appointments
+   widget (same-origin iframe). Client prefers no fixed session length shown.
+   Safe no-op on the static demo (no .ssa-embed iframe present). */
+(function hideSsaDuration(){
+  function scrub(doc){
+    try{
+      var els = doc.querySelectorAll('body *');
+      for(var i=0;i<els.length;i++){
+        var el = els[i];
+        if(el.children.length===0){
+          var t = (el.textContent||'').trim();
+          if(/^\d+\s*minutes?$/i.test(t)){ el.style.display='none'; }
+        }
+      }
+    }catch(e){}
+  }
+  function attach(){
+    var ifr = document.querySelector('.ssa-embed iframe');
+    if(!ifr) return;
+    function run(){
+      try{
+        var d = ifr.contentDocument || (ifr.contentWindow && ifr.contentWindow.document);
+        if(!d || !d.body) return;
+        scrub(d);
+        if(!ifr._ssaMO){
+          ifr._ssaMO = new MutationObserver(function(){ scrub(d); });
+          ifr._ssaMO.observe(d.body, {childList:true, subtree:true, characterData:true});
+        }
+      }catch(e){}
+    }
+    ifr.addEventListener('load', run);
+    [800,2000,4000,7000].forEach(function(ms){ setTimeout(run, ms); });
+  }
+  if(document.readyState !== 'loading') attach();
+  else document.addEventListener('DOMContentLoaded', attach);
 })();
